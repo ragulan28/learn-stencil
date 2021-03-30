@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Watch } from '@stencil/core';
 
 @Component({
   tag: 'state-component',
@@ -8,6 +8,11 @@ import { Component, h, State } from '@stencil/core';
 export class StateComponent {
 
   @State() count: number = 1;
+
+  @Watch('count')
+  watchHandler(newValue: boolean, oldValue: boolean) {
+    console.log('The new value of activated is: ', newValue, oldValue);
+  }
 
   onIncrement = () => {
     this.count = this.count + 1;
