@@ -10,7 +10,7 @@ export class StateComponent {
   @State() count: number = 1;
 
   @Watch('count')
-  watchHandler(newValue: boolean, oldValue: boolean) {
+  watchHandler(newValue: number, oldValue: number) {
     console.log('The new value of activated is: ', newValue, oldValue);
   }
 
@@ -21,7 +21,7 @@ export class StateComponent {
   render() {
     return (
       <div>
-        <count-component count={this.count}/>
+        <count-component count={this.count} onOnCountLimit={(e)=>console.log(e.detail)}/>
         <button onClick={() => this.onIncrement()}>increment</button>
       </div>
     );

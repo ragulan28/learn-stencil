@@ -54,6 +54,7 @@ declare global {
 declare namespace LocalJSX {
     interface CountComponent {
         "count"?: number;
+        "onOnCountLimit"?: (event: CustomEvent<string>) => void;
     }
     interface MyComponent {
         /**
