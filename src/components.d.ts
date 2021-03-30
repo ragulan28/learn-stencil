@@ -6,6 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CountComponent {
+        "count": number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -24,6 +27,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCountComponentElement extends Components.CountComponent, HTMLStencilElement {
+    }
+    var HTMLCountComponentElement: {
+        prototype: HTMLCountComponentElement;
+        new (): HTMLCountComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -37,11 +46,15 @@ declare global {
         new (): HTMLStateComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "count-component": HTMLCountComponentElement;
         "my-component": HTMLMyComponentElement;
         "state-component": HTMLStateComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CountComponent {
+        "count"?: number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -59,6 +72,7 @@ declare namespace LocalJSX {
     interface StateComponent {
     }
     interface IntrinsicElements {
+        "count-component": CountComponent;
         "my-component": MyComponent;
         "state-component": StateComponent;
     }
@@ -67,6 +81,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "count-component": LocalJSX.CountComponent & JSXBase.HTMLAttributes<HTMLCountComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "state-component": LocalJSX.StateComponent & JSXBase.HTMLAttributes<HTMLStateComponentElement>;
         }
