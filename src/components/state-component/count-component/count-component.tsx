@@ -1,4 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { CountFunctional } from '../count-funectional-component';
 
 @Component({
   tag: 'count-component',
@@ -23,7 +24,7 @@ export class CountComponent {
   render() {
     return (
       <div>
-        {this.count}
+        <CountFunctional name='count'> {this.count}</CountFunctional>
       </div>
     );
   }
